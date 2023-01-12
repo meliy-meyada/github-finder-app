@@ -2,6 +2,37 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+- The ``searchUsers`` function creates a new ``URLSearchParams`` object with a single key-value pair, where the key is ``q`` and the value is the text passed in as a parameter.
+```js,
+    // Get Search Results
+export const searchUsers = async (text) => {
+
+
+    const params = new URLSearchParams({
+        q: text
+    })
+
+    const response = await github.get(`/search/users?${params}`)
+    return response.data.items
+}
+```
+---
+
+- The ``getUserAndRepos`` function takes in a login parameter and uses it to make two parallel GET requests to the GitHub API, one to the ``/users/{login}`` endpoint and another to the ``/users/{login}/repos `` endpoint. This function is returning an object that contains the data of both requests.
+```js,
+//  Get User and repos
+export const getUserAndRepos = async (login) => {
+    const [user, repos] = await Promise.all([
+        github.get(`/users/${login}`),
+        github.get(`/users/${login}/repos`)
+    ])
+
+    return {user: user.data, repos: repos.data}
+}
+
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:
