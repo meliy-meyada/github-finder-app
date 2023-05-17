@@ -5,10 +5,10 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
 
 const github = axios.create({
     baseURL: GITHUB_URL,
-    headers: {Authorization: `token ${GITHUB_TOKEN}`}
+    headers: { Authorization: `token ${GITHUB_TOKEN}` }
 })
 
-    // Get Search Results
+// Get Search Results
 export const searchUsers = async (text) => {
 
 
@@ -27,5 +27,5 @@ export const getUserAndRepos = async (login) => {
         github.get(`/users/${login}/repos`)
     ])
 
-    return {user: user.data, repos: repos.data}
+    return { user: user.data, repos: repos.data }
 }
