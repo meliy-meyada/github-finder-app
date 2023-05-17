@@ -1,4 +1,4 @@
-import {FaCodepen, FaStore, FaUserFriends, FaUsers} from 'react-icons/fa'
+import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
 import { useEffect, useContext } from "react"
 import { useParams, Link } from "react-router-dom"
 import Spinner from '../components/layout/Spinner'
@@ -8,23 +8,23 @@ import { getUserAndRepos } from '../context/github/GithubActions'
 
 
 function User() {
-    const {  user, loading, repos, dispatch } = useContext(GithubContext)
-    const params = useParams()
+  const { user, loading, repos, dispatch } = useContext(GithubContext)
+  const params = useParams()
 
   useEffect(() => {
-      dispatch({type: 'SET_LOADING'})
-      const getUserData = async () => {
-        const userData = await getUserAndRepos(params.login)
-        dispatch({ type: "GET_USER_AND_REPOS", payload: userData })
+    dispatch({ type: 'SET_LOADING' })
+    const getUserData = async () => {
+      const userData = await getUserAndRepos(params.login)
+      dispatch({ type: "GET_USER_AND_REPOS", payload: userData })
 
-        
-      }
-      getUserData()
-    }, [dispatch, params.login])
 
-    if (loading) {
-        return <Spinner />
     }
+    getUserData()
+  }, [dispatch, params.login])
+
+  if (loading) {
+    return <Spinner />
+  }
   const {
     name,
     type,
@@ -42,7 +42,7 @@ function User() {
     hireable,
   } = user
 
-    return (
+  return (
     <>
       <div className='w-full mx-auto lg:w-10/12'>
         <div className='mb-4'>
@@ -164,7 +164,7 @@ function User() {
             </div>
           </div>
         </div>
-          <RepoList repos={ repos } />
+        <RepoList repos={repos} />
       </div>
     </>
   )

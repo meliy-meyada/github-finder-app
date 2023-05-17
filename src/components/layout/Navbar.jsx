@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import ProTypes from 'prop-types'
 
 
-function Navbar({title}) {
+function Navbar({ title }) {
     return (
         <nav className='navbar mb-12 shadow-lg bg-base-300 text-neutral-content'>
             <div className="container mx-auto">
                 <div className="flec-none px-2 mx-2">
                     <FaGithub className='inline pr-2 text-3xl' />
                     <Link to='/' className='text-lg font-blod align=middle'>
-                        { title }
+                        {title}
                     </Link>
                 </div>
                 <div className="flex-1 px-2 mx-2">
@@ -24,8 +24,8 @@ function Navbar({title}) {
                     </div>
                 </div>
             </div>
-    </nav>
-  )
+        </nav>
+    )
 }
 Navbar.defaultProps = {
     title: 'Github Finder'

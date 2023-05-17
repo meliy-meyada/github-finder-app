@@ -6,9 +6,9 @@ function Home() {
         <>
             <UserSearch />
             <UserResult />
-            
-      </>
-  )
+
+        </>
+    )
 }
 
 export default Home
